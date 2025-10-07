@@ -63,11 +63,13 @@ func (c *AuthController) Register(ctx *gin.Context) {
 		return
 	}
 	//创建用户
-	if err := db.Create(&model.User{Username: param.Username, Password: hashedPassword, Email: param.Email}); err != nil {
+	rerult := db.Create(&model.User{Username: param.Username, Password: hashedPassword, Email: param.Email})
+	if rerult.Error != nil {
 		ctx.JSON(500, Response{
 			Success: false,
 			Message: "用户创建失败",
 		})
+		return
 	}
 	ctx.JSON(http.StatusOK, Response{
 		Success: true,

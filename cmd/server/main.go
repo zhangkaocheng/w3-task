@@ -20,6 +20,10 @@ func main() {
 		log.Fatal("Failed to load config: ", err)
 
 	}
+
+	//设置全局变量,供后续使用
+	configs.SetGlobalConfig(cfg)
+
 	// 初始化数据库
 	_, err = repository.GetDb()
 	if err != nil {
@@ -40,8 +44,10 @@ func main() {
 	server := gin.Default()
 	//设置错误处理拦截
 	server.Use(globalintercepter.ErrorHandler())
+	handler.InitRouters(server)
+
 	//设置权限处理拦截
-	server.Use(handler.AuthHandler())
+	// server.Use(handler.AuthHandler())
 
 	// 启动服务
 	err = server.Run(fmt.Sprintf(":%d", cfg.Server.Port))

@@ -1,6 +1,6 @@
 package configs
 
-var JWTConf *JWTConfig
+var GlobalConfig *Config
 
 type Config struct {
 	MySQL  MySQLConfig  `yaml:"mysql"`
@@ -34,4 +34,12 @@ type GinConfig struct {
 type JWTConfig struct {
 	Secret     string `yaml:"secret"`
 	ExpireHour int    `yaml:"expire_hour"`
+}
+
+func SetGlobalConfig(cfg *Config) {
+	GlobalConfig = cfg
+}
+
+func GetGWTConfig() *JWTConfig {
+	return &GlobalConfig.JWT
 }
