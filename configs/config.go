@@ -1,5 +1,7 @@
 package configs
 
+var JWTConf *JWTConfig
+
 type Config struct {
 	MySQL  MySQLConfig  `yaml:"mysql"`
 	Server ServerConfig `yaml:"server"`

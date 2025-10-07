@@ -10,15 +10,15 @@ import (
 
 var DB *gorm.DB
 
-func GetDb() error {
+func GetDb() (*gorm.DB, error) {
 	dsn := "root:root@/my-blog?charset=utf8&parseTime=True&loc=Local"
 	var err error
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		return fmt.Errorf("failed to connect database: %v", err)
+		return DB, fmt.Errorf("failed to connect database: %v", err)
 	}
 	fmt.Println("success to connect database")
-	return nil
+	return DB, nil
 }
 
 // 设置连接池参数
