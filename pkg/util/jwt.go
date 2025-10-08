@@ -1,6 +1,8 @@
 package util
 
 import (
+	"fmt"
+	"strings"
 	"time"
 	"w3-task/configs"
 
@@ -30,14 +32,25 @@ func GenerateToken(userId uint, username string) (string, error) {
 
 // 解析token
 func ParseToken(tokenString string) (*Claims, error) {
+	//去掉Bearer前缀
+	tokenString = strings.TrimPrefix(tokenString, "Bearer ")
+	// 检查 token 基本格式
+	if tokenString == "" {
+		return nil, fmt.Errorf("token is empty")
+	}
+
 	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(configs.GetGWTConfig().Secret), nil
 	})
+
 	if err != nil {
-		return nil, err
+		// 返回具体的错误信息，帮助调试
+		return nil, fmt.Errorf("failed to parse token: %w", err)
 	}
+
 	if claims, ok := token.Claims.(*Claims); ok && token.Valid {
 		return claims, nil
 	}
-	return nil, nil
+
+	return nil, fmt.Errorf("invalid token")
 }

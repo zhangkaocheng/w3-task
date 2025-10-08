@@ -47,7 +47,7 @@ func main() {
 	handler.InitRouters(server)
 
 	//设置权限处理拦截
-	// server.Use(handler.AuthHandler())
+	server.Use(handler.AuthHandler())
 
 	// 启动服务
 	err = server.Run(fmt.Sprintf(":%d", cfg.Server.Port))
