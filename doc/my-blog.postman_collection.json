@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "4f63312a-5d89-419c-80ba-b163eae5c4ad",
+		"name": "my-blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Username\":\"希金斯\",\n\t\"Password\":\"111111\",\n\t\"Email\":\"666666@163.com\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "用户注册"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\":\"希金斯\",\n\t\"password\":\"111111\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "用户登录"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/post/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InNuayIsImV4cCI6MTc1OTk5MTgzN30.m3tcwYNGjQ0Gxk4nKe71T0wbZFcpQ5Z7snj5wj6kqVk",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Title\":\"西游记序\",\n\t\"Content\":\"在很久很久以前,,,,,\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						"create"
+					]
+				},
+				"description": "保存帖子"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/post/getPostById/3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/getPostById/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						"getPostById",
+						"3"
+					]
+				},
+				"description": "获取单个帖子"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/post/getAllPosts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/getAllPosts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						"getAllPosts"
+					]
+				},
+				"description": "获取所有帖子"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/post/delete/1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IuW4jOmHkeaWryIsImV4cCI6MTc1OTk5MzYyMX0.Nn-ivytK3oYiw5Yc9r5LcbTA_lUcohFAt5JcIQIH4iE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						"delete",
+						"1"
+					]
+				},
+				"description": "删除帖子"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/comment/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InNuayIsImV4cCI6MTc1OTk5MTgzN30.m3tcwYNGjQ0Gxk4nKe71T0wbZFcpQ5Z7snj5wj6kqVk",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Content\":\"非常好\",\n\t\"postId\":2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comment/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comment",
+						"create"
+					]
+				},
+				"description": "保存评论"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/comment/getCommentsByPostId/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comment/getCommentsByPostId/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comment",
+						"getCommentsByPostId",
+						"2"
+					]
+				},
+				"description": "获取帖子对应的所有评论"
+			},
+			"response": []
+		}
+	]
+}
